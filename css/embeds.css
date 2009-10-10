@@ -13,6 +13,10 @@ div#all-embeds ul#twitter_update_list {
   list-style-type: none;
 }
 
+div#all-embeds ul#twitter_update_list li {
+  font-size: 12px;
+}
+
 div#all-embeds h2.sidebar-title {
   font-size: 14px;
   margin: 0;
