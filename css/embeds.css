@@ -1,10 +1,19 @@
 div#all-embeds {
   position: absolute;
-  width: 200px;
+  width: 250px;
   left: 10px;
   top: 160px;
 }
 
 div#all-embeds div {
   margin-bottom: 20px;
+}
+
+div#all-embeds div#twitter_update_list {
+  list-style-type: none;
+}
+
+div#all-embeds h2#sidebar-title {
+  font-size: 14px;
+  margin: 0;
 }
