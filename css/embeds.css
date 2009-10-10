@@ -9,7 +9,7 @@ div#all-embeds div {
   margin-bottom: 20px;
 }
 
-div#all-embeds div#twitter_update_list {
+div#all-embeds ul#twitter_update_list {
   list-style-type: none;
 }
 
