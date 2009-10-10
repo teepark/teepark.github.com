@@ -44,7 +44,6 @@
 
 <%def name="disqus_embed()" filter="trim">
   <div id="disqus_thread"></div>
-  <script type="text/javascript" src="http://disqus.com/forums/teeparksblog/embed.js"></script>
   <noscript>
     <a href="http://teeparksblog.disqus.com/?url=ref">View the discussion thread.</a>
   </noscript>
@@ -52,6 +51,7 @@
 </%def>
 
 <%def name="disqus_js()" filter="trim">
+  <script type="text/javascript" src="http://disqus.com/forums/teeparksblog/embed.js"></script>
   <script type="text/javascript">
   (function() {
     var links = document.getElementsByTagName('a');
