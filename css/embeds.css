@@ -11,7 +11,7 @@ div#all-embeds div {
 
 div#all-embeds ul#twitter_update_list {
   list-style-type: none;
-  margin-left: 10px;
+  padding-left: 10px;
 }
 
 div#all-embeds ul#twitter_update_list li {
