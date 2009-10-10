@@ -13,7 +13,7 @@ div#all-embeds div#twitter_update_list {
   list-style-type: none;
 }
 
-div#all-embeds h2#sidebar-title {
+div#all-embeds h2.sidebar-title {
   font-size: 14px;
   margin: 0;
 }
