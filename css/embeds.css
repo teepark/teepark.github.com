@@ -11,10 +11,12 @@ div#all-embeds div {
 
 div#all-embeds ul#twitter_update_list {
   list-style-type: none;
+  margin-left: 10px;
 }
 
 div#all-embeds ul#twitter_update_list li {
   font-size: 12px;
+  margin-bottom: 8px;
 }
 
 div#all-embeds h2.sidebar-title {
