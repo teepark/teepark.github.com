@@ -1,0 +1,27 @@
+<%inherit file="base.html"/>
+
+<%def name="page_css()" filter="trim">
+  ${self.stylesheet("/css/ghbadge.css")}
+</%def>
+
+<%def name="page_js()" filter="trim">
+  ${self.ghbadge_js()}
+  ${self.disqus_js()}
+</%def>
+
+<%def name="header()" filter="trim">
+  <h2>Travis Parker, aka teepark</h2>
+</%def>
+
+
+#######
+## body
+#######
+
+${self.ghbadge_embed()}
+
+<p>nothing to see here yet. <a href="http://github.com/teepark">move along, little doggie</a></p>
+
+<p>
+  ${self.disqus_embed()}
+</p>
