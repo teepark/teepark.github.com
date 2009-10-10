@@ -1,7 +1,7 @@
 <%inherit file="base.html"/>
 
 <%def name="page_css()" filter="trim">
-  ${self.stylesheet("/css/ghbadge.css")}
+  ${self.stylesheet("/css/embeds.css")}
 </%def>
 
 <%def name="page_js()" filter="trim">
@@ -18,7 +18,10 @@
 ## body
 #######
 
-${self.ghbadge_embed()}
+<div id="all-embeds">
+  ${self.ghbadge_embed()}
+  ${self.twitter_embed()}
+</div>
 
 <p>nothing to see here yet. <a href="http://github.com/teepark">move along, little doggie</a></p>
 

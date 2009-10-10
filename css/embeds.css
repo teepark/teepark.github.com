@@ -1,0 +1,10 @@
+div#all-embeds {
+  position: absolute;
+  width: 200px;
+  left: 10px;
+  top: 160px;
+}
+
+div#all-embeds div {
+  margin-bottom: 20px;
+}
