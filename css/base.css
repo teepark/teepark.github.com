@@ -7,10 +7,9 @@ img#forkmeimg {
   top: 0px;
   left: 0px;
 }
-h2 {
+.top-header {
   width: 100%;
   text-align: center;
-  font-size: 2em;
   margin: 20px;
   display: block;
 }
