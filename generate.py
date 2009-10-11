@@ -111,8 +111,7 @@ def main():
             text = markdown.markdown(fp.read().decode('utf8'),
                     output_format='html4')
 
-        destination = "../entries/%s/%s.html" % (
-                date.strftime("%y/%b/%d").lower(), name)
+        destination = "../entries/%s.html" % name
 
         excerpts.append((date, name.replace("-", " "), destination[2:],
             truncate_html_words(text, TEASER_SIZE)))
