@@ -1,5 +1,9 @@
 <%inherit file="base.html"/>
 
+<%def name="page_css()" filter="trim">
+  ${self.stylesheet("/css/embeds.css")}
+</%def>
+
 <%def name="page_js()" filter="trim">
   ${self.ghbadge_js()}
   ${self.twitter_js()}
