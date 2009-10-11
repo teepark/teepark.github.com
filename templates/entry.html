@@ -1,0 +1,15 @@
+<%inherit file="base.html"/>
+
+<%def name="page_js()" filter="trim">
+  ${self.disqus_js()}
+</%def>
+
+#######
+## body
+#######
+
+<div class="entry_name">${name}</div>
+<div class="entry_date">${date.strftime("%b %e %Y, ~%l:%M %P")}</div>
+<div class="entry_text">${text}</div>
+
+${self.disqus_embed()}

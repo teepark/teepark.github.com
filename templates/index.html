@@ -7,7 +7,6 @@
 <%def name="page_js()" filter="trim">
   ${self.ghbadge_js()}
   ${self.twitter_js()}
-  ${self.disqus_js()}
 </%def>
 
 <%def name="header()" filter="trim">
@@ -24,10 +23,10 @@
   ${self.twitter_embed()}
 </div>
 
-<p>nothing to see here yet. <a href="http://github.com/teepark">move along, little doggie</a></p>
-
-<p style="height: 300px">&nbsp;</p>
-
-<p>
-  ${self.disqus_embed()}
-</p>
+% for date, name, path, excerpt in excerpts:
+  <a href="${path}">
+    <div class="excerpt_name">${name}</div>
+    <div class="excerpt_date">${date.strftime("%b %e %Y, ~%l:%M %P")}</div>
+  </a>
+  <div class="excerpt_text">%{excerpt}</div>
+% endfor
