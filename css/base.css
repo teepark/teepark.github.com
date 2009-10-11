@@ -19,6 +19,11 @@ div#content {
   margin-right: auto;
 }
 
+.top-header a,
+.top-header a:link,
+.top-header a:visited,
+.top-header a:hover,
+.top-header a:active,
 a.excerpt-link,
 a.excerpt-link:link,
 a.excerpt-link:visited,
