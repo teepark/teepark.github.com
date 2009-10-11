@@ -11,6 +11,7 @@ img#forkmeimg {
   width: 100%;
   text-align: center;
   margin: 20px;
+  margin-bottom: 40px;
   display: block;
 }
 div#content {
