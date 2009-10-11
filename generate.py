@@ -123,12 +123,12 @@ def main():
 
         with open(destination, 'w') as fp:
             fp.write(entry.render_unicode(date=date, text=text,
-                name=name.replace("-", " ")))
+                name=name.replace("-", " ")).encode('utf8'))
 
     excerpts.sort()
 
     index = mako.template.Template(filename="index.html", lookup=lookup)
-    text = index.render_unicode(excerpts=excerpts[:TEASER_COUNT])
+    text = index.render_unicode(excerpts=excerpts[:TEASER_COUNT]).encode('utf8')
 
     with open("../index.html", 'w') as fp:
         fp.write(text)
