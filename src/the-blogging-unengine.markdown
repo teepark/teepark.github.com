@@ -18,9 +18,13 @@ I chose the latter, and the free hosting service I'm using for that is github's 
 
 No, I'm not just writing HTML by hand to create blog posts. The technologies I'm using are just mako for templating, markdown for my entry format, and of course git for the uploading.
 
-[The site content generation script](http://github.com/teepark/teepark.github.com/blob/master/generate.py) searches for *.markdown files in the src/ directory, converts that markdown to html 4 and passes it into mako running the [entry.html][] template (also using the last-modified date and figuring the post title from the filename), and generates an HTML file for each entry in the entries/ directory (actually in subdirectories determined by the last-modified date, to create date-based urls). It also collects a brief excerpt of each entry using truncate_html_words() poached from django.utils.text, sorts them by date and passes them into the [index.html][] template.
+[The site content generation script](http://github.com/teepark/teepark.github.com/blob/master/generate.py) searches for *.markdown files in the src/ directory, converts that markdown to html 4 and passes it into mako running the [entry.html][] template (also using the last-modified date and figuring the post title from the filename), and generates an HTML file for each entry in the entries/ directory. It also collects a brief excerpt of each entry using truncate_html_words() poached from django.utils.text, sorts them by date and passes them into the [index.html][] template.
 
-The great thing about all this is that I have found that I can do a pretty good job integrating with web services and having dynamic elements on my page entirely with javascript. So far I have data from github (via [Dr Nic's github badge](http://github.com/drnic/github-badges)), twitter (with their javascript embed), and even powerful comments on my posts from [disqus][]. I'm pretty stoked about what can be done totally server-less.
+The great thing about all this is that I have found that I can do a pretty good job integrating with web services and having dynamic elements on my page entirely with javascript. So far I have data from github (via [Dr Nic's github badge](http://github.com/drnic/github-badges)), twitter (with their javascript embed), and even powerful comments on my posts from [disqus][]. I'm pretty stoked about what can be done with a totally static server and a little processing before uploading.
+
+The final touch was adding a [pre-commit hook][] that runs the generation script and adds the generated files to the commit. So I really don't have to think about the generated files at all - as I'm committing my changes to the src/ directory, the changes propogate out to the rest of the repository and update the website then next time I push.
+
+I was thinking about how to separate the code that drives this system from the content. But in the end I was more interested in getting it up and running.
 
 Now to see if I update this thing at all. I have a couple of ideas for posts, but that does not a successful blogging endeavor make.
 
@@ -28,3 +32,4 @@ Now to see if I update this thing at all. I have a couple of ideas for posts, bu
 [index.html]: http://github.com/teepark/teepark.github.com/blob/master/templates/index.html
 [entry.html]: http://github.com/teepark/teepark.github.com/blob/master/templates/entry.html
 [disqus]: http://disqus.com
+[pre-commit hook]: http://github.com/teepark/teepark.github.com/blob/master/pre-commit-hook.sh
