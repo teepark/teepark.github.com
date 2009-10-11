@@ -100,7 +100,8 @@ def main():
 
     excerpts = []
 
-    shutil.rmtree("../entries")
+    if os.path.isdir("../entries"):
+        shutil.rmtree("../entries")
 
     for path in glob.glob("../src/*.markdown"):
         name = path[path.rfind("/") + 1:path.rfind(".")]

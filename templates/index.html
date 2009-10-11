@@ -30,3 +30,9 @@
   </a>
   <div class="entry-text">${excerpt}</div>
 % endfor
+
+% if not excerpts:
+  <p>
+    nothing to see here. <a href="http://github.com/teepark">move along, little doggies</a>
+  </p>
+% endif
