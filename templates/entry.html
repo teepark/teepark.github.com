@@ -4,11 +4,14 @@
   ${self.disqus_js()}
 </%def>
 
+<%def name="header()" filter="trim">
+  ${name}
+</%def>
+
 #######
 ## body
 #######
 
-<h1>${name}</h1>
 <div class="entry-date">${date.strftime("%b %e %Y at %l:%M %P")}</div>
 <div class="entry-text">${text}</div>
 
