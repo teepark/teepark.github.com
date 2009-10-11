@@ -1,6 +1,8 @@
 <%inherit file="base.html"/>
 
 <%def name="page_js()" filter="trim">
+  ${self.ghbadge_js()}
+  ${self.twitter_js()}
   ${self.disqus_js()}
 </%def>
 
@@ -11,6 +13,11 @@
 #######
 ## body
 #######
+
+<div id="all-embeds">
+  ${self.ghbadge_embed()}
+  ${self.twitter_embed()}
+</div>
 
 <div class="entry-date">${date.strftime("%b %e %Y at %l:%M %P")}</div>
 <div class="entry-text">${text}</div>
