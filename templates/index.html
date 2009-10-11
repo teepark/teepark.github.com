@@ -24,9 +24,9 @@
 </div>
 
 % for date, name, path, excerpt in excerpts:
-  <a href="${path}">
-    <div class="excerpt_name">${name}</div>
-    <div class="excerpt_date">${date.strftime("%b %e %Y, ~%l:%M %P")}</div>
+  <a href="${path}" class="excerpt-link">
+    <div class="entry-name">${name}</div>
+    <div class="entry-date">${date.strftime("%b %e %Y, around %l:%M %P")}</div>
   </a>
-  <div class="excerpt_text">${excerpt}</div>
+  <div class="entry-text">${excerpt}</div>
 % endfor

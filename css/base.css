@@ -1,7 +1,7 @@
 body {
-  font-family: Courier New, Courier New, Courier, monospace;
+  font-family: Courier New, Courier, monospace;
 }
-#forkmeimg {
+img#forkmeimg {
   border: 0px solid;
   position: absolute;
   top: 0px;
@@ -18,4 +18,25 @@ div#content {
   width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+a.excerpt-link,
+a.excerpt-link:link,
+a.excerpt-link:visited,
+a.excerpt-link:hover,
+a.excerpt-link:active {
+  color: black;
+  text-decoration: none;
+}
+
+div.entry-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+div.entry-date {
+  font-size: 0.7em;
+  font-style: italic;
+}
+div.entry-text {
+  margin-bottom: 30px;
 }
