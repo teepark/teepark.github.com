@@ -1,0 +1,94 @@
+
+<!doctype HTML>
+<head>
+  <title>teepark on github</title>
+  <link rel="stylesheet" type="text/css" href="/css/base.css" />
+  <link rel="stylesheet" type="text/css" href="/css/embeds.css" />
+</head>
+
+<body>
+  <a href="http://github.com/teepark">
+    <img alt="fork me on github" src="/images/forkme_left.png" id="forkmeimg">
+  </a>
+
+  <h1 class="top-header"><a href="/">my experience with mako</a></h1>
+
+  <div id="content">
+    
+
+
+
+
+
+
+
+
+<div id="all-embeds">
+  <div id="github-badge"></div>
+  <div id="twitter_div">
+    <h2 class="sidebar-title">why yes, i AM on twitter</h2>
+    <ul id="twitter_update_list"></ul>
+    <a href="http://twitter.com/teepark" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+  </div>
+</div>
+
+<div class="entry-date">Oct 12 2009 at  4:02 pm</div>
+<div class="entry-text"><p>I used mako for <a href="http://github.com/teepark/teepark.github.com/tree/master/templates/">this blog's templates</a> primarily because I hadn't ever used mako for anything and I was curious. I have used cheetah and django templates pretty extensively, and so after rolling jinja in with django and discarding anything XML-based, mako is pretty much the only major python-based templating system I don't yet know.</p>
+<p>In my experience templating engines pretty well fall into two philosophical camps - those that want to expose a full-featured language, and those that intentionally restrict the power of the template code to enforce separation of concerns. When it comes to web frameworks I definitely throw my hat in with the latter crowd, having seen too many cases of a powerful templating language being used for model, controller and view code all in one. I think that django strikes the right mix of a templating language which is limited to display logic out-of-the-box, but which is also extensible and exposes lower-level machinery so you can break that paradigm if you want, but you have to <em>really</em> want to.</p>
+<p>For this project which only uses the server to serve <a href="/entries/the-blogging-unengine.html">static content</a>, I wanted the template to be essentially the lowest level in the stack (there is only a <a href="http://github.com/teepark/teepark.github.com/blob/master/generate.py">very thin</a> controller layer), and therefore wanted powerful templates. The thing I dislike about cheetah the most is that if that power is going to be exposed, I shouldn't have to prefix every code statement with a special character (#), or use extra keywords for things like assigning to variables (set). As the <a href="http://www.makotemplates.org/">mako homepage</a> says, "Python is a great scripting language. Don't reinvent the wheel...your templates can handle it !"</p>
+<p>Unfortunately, mako seems to have some serious problems of its own. One is syntax overload. You have simple expression escaping with the familiar ${...} notation, python blocks with &lt;% ... %&gt;, module-level python blocks with &lt;%! ... %&gt;, a myriad of xml-ish tags like &lt;%include&gt;...</%include> (srsly?), and finally cheetah-style inline statements, prefixed with "%". What is the deal? Django has 2 pieces of syntax: {% tag %}...{% endtag %} and {{ variable }}. Cheetah also has two: ${...} (with curly-braces optional) and line-leading "#" for statements. This is a big problem.</p>
+<p>Another issue issue I have had seems to have significant overlap with a pattern that I would imagine to be a major use-case. It is that there is no way to store a variable in a global namespace from a parent template and have it visible in the child (I am ready to be corrected on this point, I just couldn't find one). My problem is that I have an embed from twitter for which I need to place a <div> in the right place in the markup, and a <script> at the end of the body. What I'd like to do is expose a function from the base template that embeds the <div> and sets a global variable, so that in the parent's body it can know that the <div> is there and include the <script>. Instead I'm having to expose two functions, twitter_embed() and twitter_js(), and call them both in the right places in the child. Adam Gomaa explains the issues here <a href="http://adam.gomaa.us/blog/2007/aug/13/mako-problems/#namespace">pretty well</a>. In contrast, cheetah's inheritance simply maps straight onto python class inheritance. Django doesn't allow setting variables from within templates by default, but the way you would do it with a custom tag would be to apply it to the context, which is render-wide, so would make it up to parents and down to children.</p></div>
+
+<div id="disqus_thread"></div>
+  <noscript>
+    <a href="http://teeparksblog.disqus.com/?url=ref">View the discussion thread.</a>
+  </noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  </div>
+
+  <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+  <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/teepark.json?callback=twitterCallback2&count=5"></script>
+  <script type="text/javascript" charset="utf-8">
+    GITHUB_USERNAME="teepark";
+    GITHUB_LIST_LENGTH=10;
+    GITHUB_TITLE = "My Projects"
+    GITHUB_SHOW_ALL = "Show all"
+  </script>
+  <script src="http://drnic.github.com/github-badges/dist/github-badge-launcher.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://disqus.com/forums/teeparksblog/embed.js"></script>
+  <script type="text/javascript">
+  (function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+      if(links[i].href.indexOf('#disqus_thread') >= 0)
+        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/teeparksblog/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
