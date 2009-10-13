@@ -124,7 +124,7 @@ def main():
             fp.write(entry.render_unicode(date=date, text=text,
                 name=name.replace("-", " ")).encode('utf8'))
 
-    excerpts.sort()
+    excerpts.sort(reverse=True)
 
     index = mako.template.Template(filename="index.html", lookup=lookup)
     text = index.render_unicode(excerpts=excerpts[:TEASER_COUNT]).encode('utf8')
