@@ -15,8 +15,11 @@ div#all-embeds ul#twitter_update_list {
 }
 
 div#all-embeds ul#twitter_update_list li {
-  font-size: 12px;
   margin-bottom: 8px;
+}
+
+div#twitter_div {
+  font-size: 12px;
 }
 
 div#all-embeds h2.sidebar-title {
