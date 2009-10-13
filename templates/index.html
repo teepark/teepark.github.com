@@ -13,6 +13,10 @@
   Travis Parker, aka teepark
 </%def>
 
+<%
+import re
+link_puller = re.compile("<\/?a(>| .*?>)")
+%>
 
 #######
 ## body
@@ -24,12 +28,12 @@
 </div>
 
 % for date, name, path, excerpt in excerpts:
-  <a href="${path}" class="excerpt-link">
-  <div class="excerpt">
+  <a href="${path}">
+    <div class="excerpt">
       <div class="entry-name">${name}</div>
       <div class="entry-date">${date.strftime("%b %e %Y at %l:%M %P")}</div>
-      <div class="entry-text">${excerpt}</div>
-  </div>
+      <div class="entry-text">${link_puller.sub("", excerpt)}</div>
+    </div>
   </a>
 % endfor
 

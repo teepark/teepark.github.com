@@ -37,6 +37,7 @@ div.excerpt {
   background-color: #ddd;
   border: 1px dashed black;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 div.entry-name {
