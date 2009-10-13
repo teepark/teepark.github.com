@@ -28,7 +28,7 @@ link_puller = re.compile("<\/?a(>| .*?>)")
 </div>
 
 % for date, name, path, excerpt in excerpts:
-  <a href="${path}">
+  <a href="${path}" class="excerpt-link">
     <div class="excerpt">
       <div class="entry-name">${name}</div>
       <div class="entry-date">${date.strftime("%b %e %Y at %l:%M %P")}</div>
