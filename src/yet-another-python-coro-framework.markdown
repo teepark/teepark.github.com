@@ -1,6 +1,6 @@
 I've been hacking on two of my favorite personal projects recently, [greenhouse][] and [feather][]. They are a python-based [greenlet][]-based non-blocking I/O framework and webserver, respectively.
 
-[Eventlet][] uses greenlets to create coroutines, and [twisted][], [kamaelia][], [cogen][] and a host of others create them with python 2.5+'s generators-as-threads features. So why re-invent the wheel? For one, as Jeff Atwood explains, it's worth it to re-invent the wheel [if you want to know better how wheels work][]. For another, there were ideas that I wanted to try and places I thought I could improve on the architecture of eventlet, in particular (I didn't know about cogen when I got started with this).
+[Eventlet][] uses greenlets to create coroutines, and [twisted][], [kamaelia][], [cogen][] and a host of others create them with python 2.5+'s generators-as-threads features. So why re-invent the wheel? For one, as Jeff Atwood explains, it's worth it to re-invent the wheel [if you want to know better how wheels work][]. For another, there were ideas that I wanted to try and places I thought I could improve on the architecture of eventlet in particular.
 
 So what follows is a simplified layout of how greenhouse works, with some notes on where it differs from other notable systems and why.
 
