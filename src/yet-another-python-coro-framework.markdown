@@ -30,6 +30,7 @@ So instead of having to return all the way up the stack to our infinite loop, we
 
 #### At least, that's what eventlet does
 
+<strike>
 Eventlet, and most other systems like it do exactly what I just described. But this means that yielding to the system translates to switching to the loop greenlet and then letting it switch to the correct next place to go. I think this is twice as much switching as we really need to do there.
 
 Eventlet's main loop just figures out which greenlets should be running based on network events and timeouts, then switches to them in order. As they get back the main loop picks up where it left off so it only re-polls sockets and re-bisects the timeout list after every greenlet that it knows should run has already. This is essentially keeping global scheduler state in the stack of that main greenlet - generate a list of who should run, and while that list is non-empty pop one and switch to it.
@@ -37,6 +38,9 @@ Eventlet's main loop just figures out which greenlets should be running based on
 Greenhouse totally borrows all that logic, except the part about leaving the scheduler state on the stack of a special greenlet. Instead greenhouse stores its scheduler state globally so that when you yield from a greenlet, before having to switch anywhere greenhouse can figure out where it should be switching to and go straight there, cutting out the middleman main loop. The function to yield to the system says check the list of queued-up-and-ready-to-go and if there's something there pop it and switch, otherwise poll sockets and bisect the timeouts until we do have something queued up. No main loop needed.
 
 Well actually, there still does end up being a main loop just because when greenlets are created they have to be given a "parent" greenlet which defaults to the one in which it was created. This parent greenlet is where it automatically switches when the greenlet's function returns. Greenhouse's main loop greenlet is assigned as the parent to all greenlets it creates, but it only gets switched to by greenlets' functions ending, never by cooperative yielding.
+</strike>
+
+EDIT: crazy fact about greenlet I discovered after writing this - stack depth does not get cleared until you switch *up to a parent greenlet*. So once we get more than ``max-recursion-depth / in-greenlet-stack-depth`` greenlets in the scheduler at once, we hit a ``RuntimeError: maximum recursion depth exceeded`` error. greenhouse has been [changed accordingly][] (yielding is now acheived by switching up to the main greenlet).
 
 #### Bringing it all together
 
@@ -64,3 +68,4 @@ Greenlets, on the other hand, only switch when they are told. This means that yo
 [cogen]: http://code.google.com/p/cogen/
 [kamaelia]: http://www.kamaelia.org/
 [if you want to know better how wheels work]: http://www.codinghorror.com/blog/archives/001145.html
+[changed accordingly]: http://github.com/teepark/greenhouse/commit/92dac2df2d25632160eb16b9e6f155d3544fad12
