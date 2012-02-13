@@ -44,7 +44,7 @@ EDIT: crazy fact about greenlet I discovered after writing this - stack depth do
 
 #### Bringing it all together
 
-At the heart of greenlet is a class called Event. This is an object with basically just 2 operations: wait and trigger ("trigger" is actually "set" followed immediately by "clear", but it's simpler to think in terms of both together as "trigger"). Wait yields the greenlet we are on until the event is triggered by some other greenlet, at which time our waiter gets queued up to go.
+At the heart of greenhouse is a class called Event. This is an object with basically just 2 operations: wait and trigger ("trigger" is actually "set" followed immediately by "clear", but it's simpler to think in terms of both together as "trigger"). Wait yields the greenlet we are on until the event is triggered by some other greenlet, at which time our waiter gets queued up to go.
 
 Events are important because they form the bridge - with non-blocking I/O tied to Events, which are tied to that no-main-loop scheduler, greenhouse enables the very same programming style as the thread-per-connection.
 
